@@ -1,11 +1,8 @@
 import { Module } from '@nestjs/common';
-import { Module } from './inventory-logs/inventory-logs.module';
 import { InventoryLogsModule } from './inventory-logs/inventory-logs/inventory-logs.module';
-import { InventoryLogsService } from './inventory.logs/inventory-logs/inventory-logs.service';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [Module, InventoryLogsModule],
-  controllers: [],
-  providers: [InventoryLogsService],
+imports: [PrismaModule, InventoryLogsModule],
 })
 export class AppModule {}
