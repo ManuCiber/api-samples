@@ -18,13 +18,13 @@ export class SampleController {
         return this.samplesService.create(createSampleDto)
     }
 
-    @Get()
+    @Get("samples")
     @ApiOperation({summary: "Obtener el detalle de una muestra medica"})
     async findAll(){
         return this.samplesService.findAll()
     }
 
-    @Get(":id")
+    @Get("samples/:id")
     @ApiOperation({summary: "Obtener el detalle de una muestra medica"})
     @ApiResponse({status: 404, description: "Muestra medica no encontrada"})
     async findOne(@Param('id') id: string){
