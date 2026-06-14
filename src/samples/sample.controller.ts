@@ -6,25 +6,25 @@ import { UpdateSampleDto } from "./dto/update-sample";
 
 @ApiTags('Samples')
 
-@Controller('samples')
+@Controller('sample')
 export class SampleController {
     constructor(private readonly samplesService: SamplesService){}
 
     @ApiTags('Muestras Medicas')
-    @Post('samples')
+    @Post()
     @ApiOperation({summary: "Crear una nueva muestra medica"})
     @ApiResponse({status: 201, description: "Muestra medica creada exitosamente"})
     async create(@Body() createSampleDto: CreateSampleDto){
         return this.samplesService.create(createSampleDto)
     }
 
-    @Get("samples")
+    @Get()
     @ApiOperation({summary: "Obtener el detalle de una muestra medica"})
     async findAll(){
         return this.samplesService.findAll()
     }
 
-    @Get("samples/:id")
+    @Get(":id")
     @ApiOperation({summary: "Obtener el detalle de una muestra medica"})
     @ApiResponse({status: 404, description: "Muestra medica no encontrada"})
     async findOne(@Param('id') id: string){
