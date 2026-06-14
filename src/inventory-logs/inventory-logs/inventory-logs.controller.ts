@@ -12,7 +12,7 @@ export class InventoryLogsController {
         return this.logsService.findAll();
     }
     
-    @Get("sample/sample/:muestraId")
+    @Get("sample/:muestraId")
     @ApiOperation({summary: "Get inventory logs for a specific sample"})
     @ApiResponse({status: 200, description: "Returns an array of inventory logs for the specified sample"})
     @ApiResponse({status: 404, description: "Sample not found"})
