@@ -3,8 +3,9 @@ import { InventoryLogsModule } from './inventory-logs/inventory-logs/inventory-l
 import { PrismaModule } from './prisma/prisma.module';
 import { DeliveriesModule } from './deliveries/deliveries/deliveries.module';
 import { SampleModule } from './samples/samples/sample.module';
+import { VisitorsModule } from './visitors/visitors/visitors.module';
 
 @Module({
-imports: [PrismaModule, InventoryLogsModule,SampleModule, DeliveriesModule],
+imports: [PrismaModule, InventoryLogsModule,SampleModule, DeliveriesModule, VisitorsModule],
 })
 export class AppModule {}
