@@ -6,7 +6,7 @@ import { UpdateSampleDto } from "./dto/update-sample";
 
 @ApiTags('Samples')
 
-@Controller('sample')
+@Controller('samples')
 export class SampleController {
     constructor(private readonly samplesService: SamplesService){}
 
