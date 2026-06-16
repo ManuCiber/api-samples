@@ -18,10 +18,13 @@ export class VisitorsService {
     }
 
     async findAll(){
-        const visitors = this.prisma.visitador.findMany({
-            orderBy: {created_at: 'desc'},
+        const visitors = await this.prisma.visitador.findMany({
+            orderBy: {created_at: 'desc'}
         })
-        return {success: true, data: visitors}
+        return {
+            success: true,
+            data: visitors
+        }
     }
 
     async findOne(id: string){
