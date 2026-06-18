@@ -31,6 +31,7 @@ export class SampleController {
         return this.samplesService.findOne(id)
     }
 
+    @Patch(':id')
     @Put(':id')
     @ApiOperation({summary: "Actualizar una muestra medica"})
     @ApiResponse({status: 404, description: "Sample not found"})
