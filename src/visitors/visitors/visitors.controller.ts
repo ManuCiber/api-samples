@@ -30,8 +30,8 @@ export class VisitorsController {
         return this.visitorService.findOne(id)
     }
 
-    //@Put(':id')
     @Patch(':id')
+    @Put(':id')
     @ApiOperation({summary: "Update data to Visitor"})
     @ApiResponse({status: 404, description: "Visitor not found"})
     async update(@Param() id: string, @Body() updateVisitorDto: UpdateVisitorDto){
