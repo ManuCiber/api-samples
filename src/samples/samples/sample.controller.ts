@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { SamplesService } from "./samples.service";
 import { CreateSampleDto } from "./dto/create-sample";
@@ -26,21 +26,21 @@ export class SampleController {
 
     @Get(":id")
     @ApiOperation({summary: "Obtener el detalle de una muestra medica"})
-    @ApiResponse({status: 404, description: "Muestra medica no encontrada"})
+    @ApiResponse({status: 404, description: "Sample not found"})
     async findOne(@Param('id') id: string){
         return this.samplesService.findOne(id)
     }
 
     @Put(':id')
     @ApiOperation({summary: "Actualizar una muestra medica"})
-    @ApiResponse({status: 404, description: "Muestra Medica no encontrada"})
+    @ApiResponse({status: 404, description: "Sample not found"})
     async update(@Param('id') id: string, @Body()updateSampleDto: UpdateSampleDto){
         return this.samplesService.update(id, updateSampleDto)
     }
-
+    
     @Delete(':id')
     @ApiOperation({summary: "Elimina una muestra medica"})
-    @ApiResponse({status: 404, description: "Muestra medica no encontrada"})
+    @ApiResponse({status: 404, description: "Sample not found"})
     async remove (@Param('id') id: string) {
         return this.samplesService.remove(id)
     }

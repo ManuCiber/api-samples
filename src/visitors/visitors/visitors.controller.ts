@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { VisitorsService } from './visitors.service';
 import { CreateVisitorDto } from './dto/create-visitor.dto';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -30,7 +30,8 @@ export class VisitorsController {
         return this.visitorService.findOne(id)
     }
 
-    @Put(':id')
+    //@Put(':id')
+    @Patch(':id')
     @ApiOperation({summary: "Update data to Visitor"})
     @ApiResponse({status: 404, description: "Visitor not found"})
     async update(@Param() id: string, @Body() updateVisitorDto: UpdateVisitorDto){
