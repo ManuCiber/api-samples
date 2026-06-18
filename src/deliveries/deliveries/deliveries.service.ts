@@ -28,7 +28,10 @@ export class DeliveriesService {
                     `Existencias insuficientes para la muestra "${sample.nombre}". Disponibles: ${sample.existencias}, solicitadas: ${cantidad}`
                 );
             }
-            const finalFecha = fecha ? new Date(`${fecha} T00:00:00Z`): new Date()
+            const finalFecha = fecha ? new Date(`${fecha}T00:00:00Z`): new Date()
+            if(isNaN(finalFecha.getTime())){
+                throw new BadRequestException(`La fecha ${fecha} no es valida`)
+            }
             const finalHora = hora ? new Date(`1970-01-01 ${hora}:00Z`): new Date()
 
             const delivery = await tx.entrega.create({
