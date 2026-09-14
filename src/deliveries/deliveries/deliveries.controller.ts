@@ -1,4 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post, Req } from '@nestjs/common';
+import { isUUID } from 'class-validator';
+import { CreateDeliveryBatchDto } from './dto/create-delivery-batch.dto';
+import { Body, Headers, BadRequestException, Controller, Delete, Get, Param, Post, Req } from '@nestjs/common';
 import { DeliveriesService } from './deliveries.service';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CreateDeliveryDto } from './dto/create-delivery.dto';
@@ -14,6 +16,13 @@ export class DeliveriesController {
     async create(@Body() CreateDeliveryDto: CreateDeliveryDto, @Req() req: any){
         const usuarioId = req.user?.id
         return this.deliveriesService.create(CreateDeliveryDto, usuarioId);
+    }
+
+    @Post('batch')
+    @ApiOperation({summary: 'Registrar un lote completo y descontar inventario en una transaccion'})
+    async createBatch(@Body() dto: CreateDeliveryBatchDto, @Req() req: any, @Headers('idempotency-key') clave: string) {
+        if (!isUUID(clave ?? '', '4')) throw new BadRequestException('Idempotency-Key debe ser un UUID v4');
+        return this.deliveriesService.createBatch(dto, req.user?.id, clave);
     }
 
     @Get()

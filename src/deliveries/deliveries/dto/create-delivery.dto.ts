@@ -32,4 +32,7 @@ export class CreateDeliveryDto{
     @IsString()
     @IsOptional()
     estado?: string
+
+    /** Internal batch folio. It is assigned by the service, never by the client. */
+    folio?: string
 }

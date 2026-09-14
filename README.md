@@ -1,3 +1,40 @@
+## API de control de muestras
+
+Backend NestJS para inventario, visitadores y entregas médicas. Las rutas se exponen bajo `/api` y usan PostgreSQL mediante Prisma.
+
+### Configuración y ejecución
+
+Define `DATABASE_URL` y, opcionalmente, `PORT` en `.env` o `.env.local`.
+
+```bash
+npm install
+npx prisma generate
+npx prisma migrate deploy
+npm run start:dev
+```
+
+Swagger está disponible en `/api/docs`.
+
+### Entregas por lote e idempotencia
+
+`POST /api/deliveries/batch` recibe un `visitador_id` y una lista `items` con `muestra_id` y `cantidad`. Requiere la cabecera `Idempotency-Key` con un UUID v4. El backend descuenta existencias, actualiza asignaciones, registra logs y crea las entregas en una única transacción.
+
+Repetir la misma clave con el mismo contenido devuelve la respuesta original sin duplicar descuentos. Reutilizarla con otro contenido o usuario devuelve `409 Conflict`. Cada lote recibe un folio persistente (`CE-000001`) compartido por sus líneas.
+
+Las migraciones necesarias son `20260911000000_delivery_idempotency` y `20260912000000_persistent_delivery_folio`; en producción se aplican con `npx prisma migrate deploy`. No uses `migrate reset` sobre datos reales.
+
+### Pruebas
+
+```bash
+npm run build
+npm test -- --runInBand
+node --test test/deliveries.integration.cjs
+```
+
+La integración requiere `TEST_DATABASE_URL` apuntando a una base local exclusiva cuyo nombre termine en `_integration_test`. Consulta [test/IDEMPOTENCY.md](test/IDEMPOTENCY.md) para recuperación tras pérdida de respuesta y despliegue coordinado.
+
+---
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>

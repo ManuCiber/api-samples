@@ -59,6 +59,7 @@ model Entrega {
   fecha            DateTime  @db.Date
   hora             DateTime  @db.Time
   estado           String?
+  folio            String?
   created_at       DateTime  @default(now())
 
   @@map("Entregas")
@@ -75,4 +76,11 @@ model LogInventario {
   created_at      DateTime @default(now())
 
   @@map("Logs_Inventario")
+}
+
+model OperacionEntrega {
+  clave     String   @id
+  huella    String
+  respuesta Json?
+  creada_en DateTime @default(now())
 }

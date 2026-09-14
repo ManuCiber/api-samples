@@ -38,6 +38,11 @@ export type Entrega = $Result.DefaultSelection<Prisma.$EntregaPayload>
  * 
  */
 export type LogInventario = $Result.DefaultSelection<Prisma.$LogInventarioPayload>
+/**
+ * Model OperacionEntrega
+ * 
+ */
+export type OperacionEntrega = $Result.DefaultSelection<Prisma.$OperacionEntregaPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -209,6 +214,16 @@ export class PrismaClient<
     * ```
     */
   get logInventario(): Prisma.LogInventarioDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.operacionEntrega`: Exposes CRUD operations for the **OperacionEntrega** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OperacionEntregas
+    * const operacionEntregas = await prisma.operacionEntrega.findMany()
+    * ```
+    */
+  get operacionEntrega(): Prisma.OperacionEntregaDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -647,7 +662,8 @@ export namespace Prisma {
     Muestra: 'Muestra',
     Visitador: 'Visitador',
     Entrega: 'Entrega',
-    LogInventario: 'LogInventario'
+    LogInventario: 'LogInventario',
+    OperacionEntrega: 'OperacionEntrega'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -663,7 +679,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "usuario" | "muestra" | "visitador" | "entrega" | "logInventario"
+      modelProps: "usuario" | "muestra" | "visitador" | "entrega" | "logInventario" | "operacionEntrega"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1037,6 +1053,80 @@ export namespace Prisma {
           }
         }
       }
+      OperacionEntrega: {
+        payload: Prisma.$OperacionEntregaPayload<ExtArgs>
+        fields: Prisma.OperacionEntregaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OperacionEntregaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OperacionEntregaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>
+          }
+          findFirst: {
+            args: Prisma.OperacionEntregaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OperacionEntregaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>
+          }
+          findMany: {
+            args: Prisma.OperacionEntregaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>[]
+          }
+          create: {
+            args: Prisma.OperacionEntregaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>
+          }
+          createMany: {
+            args: Prisma.OperacionEntregaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OperacionEntregaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>[]
+          }
+          delete: {
+            args: Prisma.OperacionEntregaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>
+          }
+          update: {
+            args: Prisma.OperacionEntregaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>
+          }
+          deleteMany: {
+            args: Prisma.OperacionEntregaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OperacionEntregaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OperacionEntregaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>[]
+          }
+          upsert: {
+            args: Prisma.OperacionEntregaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacionEntregaPayload>
+          }
+          aggregate: {
+            args: Prisma.OperacionEntregaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOperacionEntrega>
+          }
+          groupBy: {
+            args: Prisma.OperacionEntregaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OperacionEntregaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OperacionEntregaCountArgs<ExtArgs>
+            result: $Utils.Optional<OperacionEntregaCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1150,6 +1240,7 @@ export namespace Prisma {
     visitador?: VisitadorOmit
     entrega?: EntregaOmit
     logInventario?: LogInventarioOmit
+    operacionEntrega?: OperacionEntregaOmit
   }
 
   /* Types for Logging */
@@ -4606,6 +4697,7 @@ export namespace Prisma {
     fecha: Date | null
     hora: Date | null
     estado: string | null
+    folio: string | null
     created_at: Date | null
   }
 
@@ -4619,6 +4711,7 @@ export namespace Prisma {
     fecha: Date | null
     hora: Date | null
     estado: string | null
+    folio: string | null
     created_at: Date | null
   }
 
@@ -4632,6 +4725,7 @@ export namespace Prisma {
     fecha: number
     hora: number
     estado: number
+    folio: number
     created_at: number
     _all: number
   }
@@ -4655,6 +4749,7 @@ export namespace Prisma {
     fecha?: true
     hora?: true
     estado?: true
+    folio?: true
     created_at?: true
   }
 
@@ -4668,6 +4763,7 @@ export namespace Prisma {
     fecha?: true
     hora?: true
     estado?: true
+    folio?: true
     created_at?: true
   }
 
@@ -4681,6 +4777,7 @@ export namespace Prisma {
     fecha?: true
     hora?: true
     estado?: true
+    folio?: true
     created_at?: true
     _all?: true
   }
@@ -4781,6 +4878,7 @@ export namespace Prisma {
     fecha: Date
     hora: Date
     estado: string | null
+    folio: string | null
     created_at: Date
     _count: EntregaCountAggregateOutputType | null
     _avg: EntregaAvgAggregateOutputType | null
@@ -4813,6 +4911,7 @@ export namespace Prisma {
     fecha?: boolean
     hora?: boolean
     estado?: boolean
+    folio?: boolean
     created_at?: boolean
     muestra?: boolean | MuestraDefaultArgs<ExtArgs>
     visitador?: boolean | VisitadorDefaultArgs<ExtArgs>
@@ -4828,6 +4927,7 @@ export namespace Prisma {
     fecha?: boolean
     hora?: boolean
     estado?: boolean
+    folio?: boolean
     created_at?: boolean
     muestra?: boolean | MuestraDefaultArgs<ExtArgs>
     visitador?: boolean | VisitadorDefaultArgs<ExtArgs>
@@ -4843,6 +4943,7 @@ export namespace Prisma {
     fecha?: boolean
     hora?: boolean
     estado?: boolean
+    folio?: boolean
     created_at?: boolean
     muestra?: boolean | MuestraDefaultArgs<ExtArgs>
     visitador?: boolean | VisitadorDefaultArgs<ExtArgs>
@@ -4858,10 +4959,11 @@ export namespace Prisma {
     fecha?: boolean
     hora?: boolean
     estado?: boolean
+    folio?: boolean
     created_at?: boolean
   }
 
-  export type EntregaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "muestra_id" | "visitador_id" | "nombre_visitador" | "nombre_muestra" | "cantidad" | "fecha" | "hora" | "estado" | "created_at", ExtArgs["result"]["entrega"]>
+  export type EntregaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "muestra_id" | "visitador_id" | "nombre_visitador" | "nombre_muestra" | "cantidad" | "fecha" | "hora" | "estado" | "folio" | "created_at", ExtArgs["result"]["entrega"]>
   export type EntregaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     muestra?: boolean | MuestraDefaultArgs<ExtArgs>
     visitador?: boolean | VisitadorDefaultArgs<ExtArgs>
@@ -4891,6 +4993,7 @@ export namespace Prisma {
       fecha: Date
       hora: Date
       estado: string | null
+      folio: string | null
       created_at: Date
     }, ExtArgs["result"]["entrega"]>
     composites: {}
@@ -5326,6 +5429,7 @@ export namespace Prisma {
     readonly fecha: FieldRef<"Entrega", 'DateTime'>
     readonly hora: FieldRef<"Entrega", 'DateTime'>
     readonly estado: FieldRef<"Entrega", 'String'>
+    readonly folio: FieldRef<"Entrega", 'String'>
     readonly created_at: FieldRef<"Entrega", 'DateTime'>
   }
     
@@ -6889,6 +6993,989 @@ export namespace Prisma {
 
 
   /**
+   * Model OperacionEntrega
+   */
+
+  export type AggregateOperacionEntrega = {
+    _count: OperacionEntregaCountAggregateOutputType | null
+    _min: OperacionEntregaMinAggregateOutputType | null
+    _max: OperacionEntregaMaxAggregateOutputType | null
+  }
+
+  export type OperacionEntregaMinAggregateOutputType = {
+    clave: string | null
+    huella: string | null
+    creada_en: Date | null
+  }
+
+  export type OperacionEntregaMaxAggregateOutputType = {
+    clave: string | null
+    huella: string | null
+    creada_en: Date | null
+  }
+
+  export type OperacionEntregaCountAggregateOutputType = {
+    clave: number
+    huella: number
+    respuesta: number
+    creada_en: number
+    _all: number
+  }
+
+
+  export type OperacionEntregaMinAggregateInputType = {
+    clave?: true
+    huella?: true
+    creada_en?: true
+  }
+
+  export type OperacionEntregaMaxAggregateInputType = {
+    clave?: true
+    huella?: true
+    creada_en?: true
+  }
+
+  export type OperacionEntregaCountAggregateInputType = {
+    clave?: true
+    huella?: true
+    respuesta?: true
+    creada_en?: true
+    _all?: true
+  }
+
+  export type OperacionEntregaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OperacionEntrega to aggregate.
+     */
+    where?: OperacionEntregaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperacionEntregas to fetch.
+     */
+    orderBy?: OperacionEntregaOrderByWithRelationInput | OperacionEntregaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OperacionEntregaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperacionEntregas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperacionEntregas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OperacionEntregas
+    **/
+    _count?: true | OperacionEntregaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OperacionEntregaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OperacionEntregaMaxAggregateInputType
+  }
+
+  export type GetOperacionEntregaAggregateType<T extends OperacionEntregaAggregateArgs> = {
+        [P in keyof T & keyof AggregateOperacionEntrega]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOperacionEntrega[P]>
+      : GetScalarType<T[P], AggregateOperacionEntrega[P]>
+  }
+
+
+
+
+  export type OperacionEntregaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OperacionEntregaWhereInput
+    orderBy?: OperacionEntregaOrderByWithAggregationInput | OperacionEntregaOrderByWithAggregationInput[]
+    by: OperacionEntregaScalarFieldEnum[] | OperacionEntregaScalarFieldEnum
+    having?: OperacionEntregaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OperacionEntregaCountAggregateInputType | true
+    _min?: OperacionEntregaMinAggregateInputType
+    _max?: OperacionEntregaMaxAggregateInputType
+  }
+
+  export type OperacionEntregaGroupByOutputType = {
+    clave: string
+    huella: string
+    respuesta: JsonValue | null
+    creada_en: Date
+    _count: OperacionEntregaCountAggregateOutputType | null
+    _min: OperacionEntregaMinAggregateOutputType | null
+    _max: OperacionEntregaMaxAggregateOutputType | null
+  }
+
+  type GetOperacionEntregaGroupByPayload<T extends OperacionEntregaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OperacionEntregaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OperacionEntregaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OperacionEntregaGroupByOutputType[P]>
+            : GetScalarType<T[P], OperacionEntregaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OperacionEntregaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    clave?: boolean
+    huella?: boolean
+    respuesta?: boolean
+    creada_en?: boolean
+  }, ExtArgs["result"]["operacionEntrega"]>
+
+  export type OperacionEntregaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    clave?: boolean
+    huella?: boolean
+    respuesta?: boolean
+    creada_en?: boolean
+  }, ExtArgs["result"]["operacionEntrega"]>
+
+  export type OperacionEntregaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    clave?: boolean
+    huella?: boolean
+    respuesta?: boolean
+    creada_en?: boolean
+  }, ExtArgs["result"]["operacionEntrega"]>
+
+  export type OperacionEntregaSelectScalar = {
+    clave?: boolean
+    huella?: boolean
+    respuesta?: boolean
+    creada_en?: boolean
+  }
+
+  export type OperacionEntregaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"clave" | "huella" | "respuesta" | "creada_en", ExtArgs["result"]["operacionEntrega"]>
+
+  export type $OperacionEntregaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OperacionEntrega"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      clave: string
+      huella: string
+      respuesta: Prisma.JsonValue | null
+      creada_en: Date
+    }, ExtArgs["result"]["operacionEntrega"]>
+    composites: {}
+  }
+
+  type OperacionEntregaGetPayload<S extends boolean | null | undefined | OperacionEntregaDefaultArgs> = $Result.GetResult<Prisma.$OperacionEntregaPayload, S>
+
+  type OperacionEntregaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OperacionEntregaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OperacionEntregaCountAggregateInputType | true
+    }
+
+  export interface OperacionEntregaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OperacionEntrega'], meta: { name: 'OperacionEntrega' } }
+    /**
+     * Find zero or one OperacionEntrega that matches the filter.
+     * @param {OperacionEntregaFindUniqueArgs} args - Arguments to find a OperacionEntrega
+     * @example
+     * // Get one OperacionEntrega
+     * const operacionEntrega = await prisma.operacionEntrega.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OperacionEntregaFindUniqueArgs>(args: SelectSubset<T, OperacionEntregaFindUniqueArgs<ExtArgs>>): Prisma__OperacionEntregaClient<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OperacionEntrega that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OperacionEntregaFindUniqueOrThrowArgs} args - Arguments to find a OperacionEntrega
+     * @example
+     * // Get one OperacionEntrega
+     * const operacionEntrega = await prisma.operacionEntrega.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OperacionEntregaFindUniqueOrThrowArgs>(args: SelectSubset<T, OperacionEntregaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OperacionEntregaClient<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OperacionEntrega that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacionEntregaFindFirstArgs} args - Arguments to find a OperacionEntrega
+     * @example
+     * // Get one OperacionEntrega
+     * const operacionEntrega = await prisma.operacionEntrega.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OperacionEntregaFindFirstArgs>(args?: SelectSubset<T, OperacionEntregaFindFirstArgs<ExtArgs>>): Prisma__OperacionEntregaClient<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OperacionEntrega that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacionEntregaFindFirstOrThrowArgs} args - Arguments to find a OperacionEntrega
+     * @example
+     * // Get one OperacionEntrega
+     * const operacionEntrega = await prisma.operacionEntrega.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OperacionEntregaFindFirstOrThrowArgs>(args?: SelectSubset<T, OperacionEntregaFindFirstOrThrowArgs<ExtArgs>>): Prisma__OperacionEntregaClient<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OperacionEntregas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacionEntregaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OperacionEntregas
+     * const operacionEntregas = await prisma.operacionEntrega.findMany()
+     * 
+     * // Get first 10 OperacionEntregas
+     * const operacionEntregas = await prisma.operacionEntrega.findMany({ take: 10 })
+     * 
+     * // Only select the `clave`
+     * const operacionEntregaWithClaveOnly = await prisma.operacionEntrega.findMany({ select: { clave: true } })
+     * 
+     */
+    findMany<T extends OperacionEntregaFindManyArgs>(args?: SelectSubset<T, OperacionEntregaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OperacionEntrega.
+     * @param {OperacionEntregaCreateArgs} args - Arguments to create a OperacionEntrega.
+     * @example
+     * // Create one OperacionEntrega
+     * const OperacionEntrega = await prisma.operacionEntrega.create({
+     *   data: {
+     *     // ... data to create a OperacionEntrega
+     *   }
+     * })
+     * 
+     */
+    create<T extends OperacionEntregaCreateArgs>(args: SelectSubset<T, OperacionEntregaCreateArgs<ExtArgs>>): Prisma__OperacionEntregaClient<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OperacionEntregas.
+     * @param {OperacionEntregaCreateManyArgs} args - Arguments to create many OperacionEntregas.
+     * @example
+     * // Create many OperacionEntregas
+     * const operacionEntrega = await prisma.operacionEntrega.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OperacionEntregaCreateManyArgs>(args?: SelectSubset<T, OperacionEntregaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OperacionEntregas and returns the data saved in the database.
+     * @param {OperacionEntregaCreateManyAndReturnArgs} args - Arguments to create many OperacionEntregas.
+     * @example
+     * // Create many OperacionEntregas
+     * const operacionEntrega = await prisma.operacionEntrega.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OperacionEntregas and only return the `clave`
+     * const operacionEntregaWithClaveOnly = await prisma.operacionEntrega.createManyAndReturn({
+     *   select: { clave: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OperacionEntregaCreateManyAndReturnArgs>(args?: SelectSubset<T, OperacionEntregaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OperacionEntrega.
+     * @param {OperacionEntregaDeleteArgs} args - Arguments to delete one OperacionEntrega.
+     * @example
+     * // Delete one OperacionEntrega
+     * const OperacionEntrega = await prisma.operacionEntrega.delete({
+     *   where: {
+     *     // ... filter to delete one OperacionEntrega
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OperacionEntregaDeleteArgs>(args: SelectSubset<T, OperacionEntregaDeleteArgs<ExtArgs>>): Prisma__OperacionEntregaClient<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OperacionEntrega.
+     * @param {OperacionEntregaUpdateArgs} args - Arguments to update one OperacionEntrega.
+     * @example
+     * // Update one OperacionEntrega
+     * const operacionEntrega = await prisma.operacionEntrega.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OperacionEntregaUpdateArgs>(args: SelectSubset<T, OperacionEntregaUpdateArgs<ExtArgs>>): Prisma__OperacionEntregaClient<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OperacionEntregas.
+     * @param {OperacionEntregaDeleteManyArgs} args - Arguments to filter OperacionEntregas to delete.
+     * @example
+     * // Delete a few OperacionEntregas
+     * const { count } = await prisma.operacionEntrega.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OperacionEntregaDeleteManyArgs>(args?: SelectSubset<T, OperacionEntregaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OperacionEntregas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacionEntregaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OperacionEntregas
+     * const operacionEntrega = await prisma.operacionEntrega.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OperacionEntregaUpdateManyArgs>(args: SelectSubset<T, OperacionEntregaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OperacionEntregas and returns the data updated in the database.
+     * @param {OperacionEntregaUpdateManyAndReturnArgs} args - Arguments to update many OperacionEntregas.
+     * @example
+     * // Update many OperacionEntregas
+     * const operacionEntrega = await prisma.operacionEntrega.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OperacionEntregas and only return the `clave`
+     * const operacionEntregaWithClaveOnly = await prisma.operacionEntrega.updateManyAndReturn({
+     *   select: { clave: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OperacionEntregaUpdateManyAndReturnArgs>(args: SelectSubset<T, OperacionEntregaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OperacionEntrega.
+     * @param {OperacionEntregaUpsertArgs} args - Arguments to update or create a OperacionEntrega.
+     * @example
+     * // Update or create a OperacionEntrega
+     * const operacionEntrega = await prisma.operacionEntrega.upsert({
+     *   create: {
+     *     // ... data to create a OperacionEntrega
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OperacionEntrega we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OperacionEntregaUpsertArgs>(args: SelectSubset<T, OperacionEntregaUpsertArgs<ExtArgs>>): Prisma__OperacionEntregaClient<$Result.GetResult<Prisma.$OperacionEntregaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OperacionEntregas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacionEntregaCountArgs} args - Arguments to filter OperacionEntregas to count.
+     * @example
+     * // Count the number of OperacionEntregas
+     * const count = await prisma.operacionEntrega.count({
+     *   where: {
+     *     // ... the filter for the OperacionEntregas we want to count
+     *   }
+     * })
+    **/
+    count<T extends OperacionEntregaCountArgs>(
+      args?: Subset<T, OperacionEntregaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OperacionEntregaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OperacionEntrega.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacionEntregaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OperacionEntregaAggregateArgs>(args: Subset<T, OperacionEntregaAggregateArgs>): Prisma.PrismaPromise<GetOperacionEntregaAggregateType<T>>
+
+    /**
+     * Group by OperacionEntrega.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacionEntregaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OperacionEntregaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OperacionEntregaGroupByArgs['orderBy'] }
+        : { orderBy?: OperacionEntregaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OperacionEntregaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOperacionEntregaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OperacionEntrega model
+   */
+  readonly fields: OperacionEntregaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OperacionEntrega.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OperacionEntregaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OperacionEntrega model
+   */
+  interface OperacionEntregaFieldRefs {
+    readonly clave: FieldRef<"OperacionEntrega", 'String'>
+    readonly huella: FieldRef<"OperacionEntrega", 'String'>
+    readonly respuesta: FieldRef<"OperacionEntrega", 'Json'>
+    readonly creada_en: FieldRef<"OperacionEntrega", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OperacionEntrega findUnique
+   */
+  export type OperacionEntregaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * Filter, which OperacionEntrega to fetch.
+     */
+    where: OperacionEntregaWhereUniqueInput
+  }
+
+  /**
+   * OperacionEntrega findUniqueOrThrow
+   */
+  export type OperacionEntregaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * Filter, which OperacionEntrega to fetch.
+     */
+    where: OperacionEntregaWhereUniqueInput
+  }
+
+  /**
+   * OperacionEntrega findFirst
+   */
+  export type OperacionEntregaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * Filter, which OperacionEntrega to fetch.
+     */
+    where?: OperacionEntregaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperacionEntregas to fetch.
+     */
+    orderBy?: OperacionEntregaOrderByWithRelationInput | OperacionEntregaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OperacionEntregas.
+     */
+    cursor?: OperacionEntregaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperacionEntregas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperacionEntregas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperacionEntregas.
+     */
+    distinct?: OperacionEntregaScalarFieldEnum | OperacionEntregaScalarFieldEnum[]
+  }
+
+  /**
+   * OperacionEntrega findFirstOrThrow
+   */
+  export type OperacionEntregaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * Filter, which OperacionEntrega to fetch.
+     */
+    where?: OperacionEntregaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperacionEntregas to fetch.
+     */
+    orderBy?: OperacionEntregaOrderByWithRelationInput | OperacionEntregaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OperacionEntregas.
+     */
+    cursor?: OperacionEntregaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperacionEntregas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperacionEntregas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperacionEntregas.
+     */
+    distinct?: OperacionEntregaScalarFieldEnum | OperacionEntregaScalarFieldEnum[]
+  }
+
+  /**
+   * OperacionEntrega findMany
+   */
+  export type OperacionEntregaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * Filter, which OperacionEntregas to fetch.
+     */
+    where?: OperacionEntregaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperacionEntregas to fetch.
+     */
+    orderBy?: OperacionEntregaOrderByWithRelationInput | OperacionEntregaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OperacionEntregas.
+     */
+    cursor?: OperacionEntregaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperacionEntregas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperacionEntregas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperacionEntregas.
+     */
+    distinct?: OperacionEntregaScalarFieldEnum | OperacionEntregaScalarFieldEnum[]
+  }
+
+  /**
+   * OperacionEntrega create
+   */
+  export type OperacionEntregaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * The data needed to create a OperacionEntrega.
+     */
+    data: XOR<OperacionEntregaCreateInput, OperacionEntregaUncheckedCreateInput>
+  }
+
+  /**
+   * OperacionEntrega createMany
+   */
+  export type OperacionEntregaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OperacionEntregas.
+     */
+    data: OperacionEntregaCreateManyInput | OperacionEntregaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OperacionEntrega createManyAndReturn
+   */
+  export type OperacionEntregaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * The data used to create many OperacionEntregas.
+     */
+    data: OperacionEntregaCreateManyInput | OperacionEntregaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OperacionEntrega update
+   */
+  export type OperacionEntregaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * The data needed to update a OperacionEntrega.
+     */
+    data: XOR<OperacionEntregaUpdateInput, OperacionEntregaUncheckedUpdateInput>
+    /**
+     * Choose, which OperacionEntrega to update.
+     */
+    where: OperacionEntregaWhereUniqueInput
+  }
+
+  /**
+   * OperacionEntrega updateMany
+   */
+  export type OperacionEntregaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OperacionEntregas.
+     */
+    data: XOR<OperacionEntregaUpdateManyMutationInput, OperacionEntregaUncheckedUpdateManyInput>
+    /**
+     * Filter which OperacionEntregas to update
+     */
+    where?: OperacionEntregaWhereInput
+    /**
+     * Limit how many OperacionEntregas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperacionEntrega updateManyAndReturn
+   */
+  export type OperacionEntregaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * The data used to update OperacionEntregas.
+     */
+    data: XOR<OperacionEntregaUpdateManyMutationInput, OperacionEntregaUncheckedUpdateManyInput>
+    /**
+     * Filter which OperacionEntregas to update
+     */
+    where?: OperacionEntregaWhereInput
+    /**
+     * Limit how many OperacionEntregas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperacionEntrega upsert
+   */
+  export type OperacionEntregaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * The filter to search for the OperacionEntrega to update in case it exists.
+     */
+    where: OperacionEntregaWhereUniqueInput
+    /**
+     * In case the OperacionEntrega found by the `where` argument doesn't exist, create a new OperacionEntrega with this data.
+     */
+    create: XOR<OperacionEntregaCreateInput, OperacionEntregaUncheckedCreateInput>
+    /**
+     * In case the OperacionEntrega was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OperacionEntregaUpdateInput, OperacionEntregaUncheckedUpdateInput>
+  }
+
+  /**
+   * OperacionEntrega delete
+   */
+  export type OperacionEntregaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+    /**
+     * Filter which OperacionEntrega to delete.
+     */
+    where: OperacionEntregaWhereUniqueInput
+  }
+
+  /**
+   * OperacionEntrega deleteMany
+   */
+  export type OperacionEntregaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OperacionEntregas to delete
+     */
+    where?: OperacionEntregaWhereInput
+    /**
+     * Limit how many OperacionEntregas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperacionEntrega without action
+   */
+  export type OperacionEntregaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacionEntrega
+     */
+    select?: OperacionEntregaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacionEntrega
+     */
+    omit?: OperacionEntregaOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6947,6 +8034,7 @@ export namespace Prisma {
     fecha: 'fecha',
     hora: 'hora',
     estado: 'estado',
+    folio: 'folio',
     created_at: 'created_at'
   };
 
@@ -6966,12 +8054,30 @@ export namespace Prisma {
   export type LogInventarioScalarFieldEnum = (typeof LogInventarioScalarFieldEnum)[keyof typeof LogInventarioScalarFieldEnum]
 
 
+  export const OperacionEntregaScalarFieldEnum: {
+    clave: 'clave',
+    huella: 'huella',
+    respuesta: 'respuesta',
+    creada_en: 'creada_en'
+  };
+
+  export type OperacionEntregaScalarFieldEnum = (typeof OperacionEntregaScalarFieldEnum)[keyof typeof OperacionEntregaScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -6988,6 +8094,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -7034,6 +8149,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -7246,6 +8375,7 @@ export namespace Prisma {
     fecha?: DateTimeFilter<"Entrega"> | Date | string
     hora?: DateTimeFilter<"Entrega"> | Date | string
     estado?: StringNullableFilter<"Entrega"> | string | null
+    folio?: StringNullableFilter<"Entrega"> | string | null
     created_at?: DateTimeFilter<"Entrega"> | Date | string
     muestra?: XOR<MuestraScalarRelationFilter, MuestraWhereInput>
     visitador?: XOR<VisitadorScalarRelationFilter, VisitadorWhereInput>
@@ -7261,6 +8391,7 @@ export namespace Prisma {
     fecha?: SortOrder
     hora?: SortOrder
     estado?: SortOrderInput | SortOrder
+    folio?: SortOrderInput | SortOrder
     created_at?: SortOrder
     muestra?: MuestraOrderByWithRelationInput
     visitador?: VisitadorOrderByWithRelationInput
@@ -7279,6 +8410,7 @@ export namespace Prisma {
     fecha?: DateTimeFilter<"Entrega"> | Date | string
     hora?: DateTimeFilter<"Entrega"> | Date | string
     estado?: StringNullableFilter<"Entrega"> | string | null
+    folio?: StringNullableFilter<"Entrega"> | string | null
     created_at?: DateTimeFilter<"Entrega"> | Date | string
     muestra?: XOR<MuestraScalarRelationFilter, MuestraWhereInput>
     visitador?: XOR<VisitadorScalarRelationFilter, VisitadorWhereInput>
@@ -7294,6 +8426,7 @@ export namespace Prisma {
     fecha?: SortOrder
     hora?: SortOrder
     estado?: SortOrderInput | SortOrder
+    folio?: SortOrderInput | SortOrder
     created_at?: SortOrder
     _count?: EntregaCountOrderByAggregateInput
     _avg?: EntregaAvgOrderByAggregateInput
@@ -7315,6 +8448,7 @@ export namespace Prisma {
     fecha?: DateTimeWithAggregatesFilter<"Entrega"> | Date | string
     hora?: DateTimeWithAggregatesFilter<"Entrega"> | Date | string
     estado?: StringNullableWithAggregatesFilter<"Entrega"> | string | null
+    folio?: StringNullableWithAggregatesFilter<"Entrega"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"Entrega"> | Date | string
   }
 
@@ -7383,6 +8517,53 @@ export namespace Prisma {
     descripcion?: StringNullableWithAggregatesFilter<"LogInventario"> | string | null
     usuario_id?: StringNullableWithAggregatesFilter<"LogInventario"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"LogInventario"> | Date | string
+  }
+
+  export type OperacionEntregaWhereInput = {
+    AND?: OperacionEntregaWhereInput | OperacionEntregaWhereInput[]
+    OR?: OperacionEntregaWhereInput[]
+    NOT?: OperacionEntregaWhereInput | OperacionEntregaWhereInput[]
+    clave?: StringFilter<"OperacionEntrega"> | string
+    huella?: StringFilter<"OperacionEntrega"> | string
+    respuesta?: JsonNullableFilter<"OperacionEntrega">
+    creada_en?: DateTimeFilter<"OperacionEntrega"> | Date | string
+  }
+
+  export type OperacionEntregaOrderByWithRelationInput = {
+    clave?: SortOrder
+    huella?: SortOrder
+    respuesta?: SortOrderInput | SortOrder
+    creada_en?: SortOrder
+  }
+
+  export type OperacionEntregaWhereUniqueInput = Prisma.AtLeast<{
+    clave?: string
+    AND?: OperacionEntregaWhereInput | OperacionEntregaWhereInput[]
+    OR?: OperacionEntregaWhereInput[]
+    NOT?: OperacionEntregaWhereInput | OperacionEntregaWhereInput[]
+    huella?: StringFilter<"OperacionEntrega"> | string
+    respuesta?: JsonNullableFilter<"OperacionEntrega">
+    creada_en?: DateTimeFilter<"OperacionEntrega"> | Date | string
+  }, "clave">
+
+  export type OperacionEntregaOrderByWithAggregationInput = {
+    clave?: SortOrder
+    huella?: SortOrder
+    respuesta?: SortOrderInput | SortOrder
+    creada_en?: SortOrder
+    _count?: OperacionEntregaCountOrderByAggregateInput
+    _max?: OperacionEntregaMaxOrderByAggregateInput
+    _min?: OperacionEntregaMinOrderByAggregateInput
+  }
+
+  export type OperacionEntregaScalarWhereWithAggregatesInput = {
+    AND?: OperacionEntregaScalarWhereWithAggregatesInput | OperacionEntregaScalarWhereWithAggregatesInput[]
+    OR?: OperacionEntregaScalarWhereWithAggregatesInput[]
+    NOT?: OperacionEntregaScalarWhereWithAggregatesInput | OperacionEntregaScalarWhereWithAggregatesInput[]
+    clave?: StringWithAggregatesFilter<"OperacionEntrega"> | string
+    huella?: StringWithAggregatesFilter<"OperacionEntrega"> | string
+    respuesta?: JsonNullableWithAggregatesFilter<"OperacionEntrega">
+    creada_en?: DateTimeWithAggregatesFilter<"OperacionEntrega"> | Date | string
   }
 
   export type UsuarioCreateInput = {
@@ -7587,6 +8768,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
     muestra: MuestraCreateNestedOneWithoutEntregasInput
     visitador: VisitadorCreateNestedOneWithoutEntregasInput
@@ -7602,6 +8784,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
   }
 
@@ -7613,6 +8796,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     muestra?: MuestraUpdateOneRequiredWithoutEntregasNestedInput
     visitador?: VisitadorUpdateOneRequiredWithoutEntregasNestedInput
@@ -7628,6 +8812,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7641,6 +8826,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
   }
 
@@ -7652,6 +8838,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7665,6 +8852,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7735,6 +8923,55 @@ export namespace Prisma {
     descripcion?: NullableStringFieldUpdateOperationsInput | string | null
     usuario_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OperacionEntregaCreateInput = {
+    clave: string
+    huella: string
+    respuesta?: NullableJsonNullValueInput | InputJsonValue
+    creada_en?: Date | string
+  }
+
+  export type OperacionEntregaUncheckedCreateInput = {
+    clave: string
+    huella: string
+    respuesta?: NullableJsonNullValueInput | InputJsonValue
+    creada_en?: Date | string
+  }
+
+  export type OperacionEntregaUpdateInput = {
+    clave?: StringFieldUpdateOperationsInput | string
+    huella?: StringFieldUpdateOperationsInput | string
+    respuesta?: NullableJsonNullValueInput | InputJsonValue
+    creada_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OperacionEntregaUncheckedUpdateInput = {
+    clave?: StringFieldUpdateOperationsInput | string
+    huella?: StringFieldUpdateOperationsInput | string
+    respuesta?: NullableJsonNullValueInput | InputJsonValue
+    creada_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OperacionEntregaCreateManyInput = {
+    clave: string
+    huella: string
+    respuesta?: NullableJsonNullValueInput | InputJsonValue
+    creada_en?: Date | string
+  }
+
+  export type OperacionEntregaUpdateManyMutationInput = {
+    clave?: StringFieldUpdateOperationsInput | string
+    huella?: StringFieldUpdateOperationsInput | string
+    respuesta?: NullableJsonNullValueInput | InputJsonValue
+    creada_en?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OperacionEntregaUncheckedUpdateManyInput = {
+    clave?: StringFieldUpdateOperationsInput | string
+    huella?: StringFieldUpdateOperationsInput | string
+    respuesta?: NullableJsonNullValueInput | InputJsonValue
+    creada_en?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7978,6 +9215,7 @@ export namespace Prisma {
     fecha?: SortOrder
     hora?: SortOrder
     estado?: SortOrder
+    folio?: SortOrder
     created_at?: SortOrder
   }
 
@@ -7995,6 +9233,7 @@ export namespace Prisma {
     fecha?: SortOrder
     hora?: SortOrder
     estado?: SortOrder
+    folio?: SortOrder
     created_at?: SortOrder
   }
 
@@ -8008,6 +9247,7 @@ export namespace Prisma {
     fecha?: SortOrder
     hora?: SortOrder
     estado?: SortOrder
+    folio?: SortOrder
     created_at?: SortOrder
   }
 
@@ -8074,6 +9314,74 @@ export namespace Prisma {
 
   export type LogInventarioSumOrderByAggregateInput = {
     cantidad?: SortOrder
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type OperacionEntregaCountOrderByAggregateInput = {
+    clave?: SortOrder
+    huella?: SortOrder
+    respuesta?: SortOrder
+    creada_en?: SortOrder
+  }
+
+  export type OperacionEntregaMaxOrderByAggregateInput = {
+    clave?: SortOrder
+    huella?: SortOrder
+    creada_en?: SortOrder
+  }
+
+  export type OperacionEntregaMinOrderByAggregateInput = {
+    clave?: SortOrder
+    huella?: SortOrder
+    creada_en?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8401,6 +9709,29 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type EntregaCreateWithoutMuestraInput = {
     id?: string
@@ -8410,6 +9741,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
     visitador: VisitadorCreateNestedOneWithoutEntregasInput
   }
@@ -8423,6 +9755,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
   }
 
@@ -8493,6 +9826,7 @@ export namespace Prisma {
     fecha?: DateTimeFilter<"Entrega"> | Date | string
     hora?: DateTimeFilter<"Entrega"> | Date | string
     estado?: StringNullableFilter<"Entrega"> | string | null
+    folio?: StringNullableFilter<"Entrega"> | string | null
     created_at?: DateTimeFilter<"Entrega"> | Date | string
   }
 
@@ -8533,6 +9867,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
     muestra: MuestraCreateNestedOneWithoutEntregasInput
   }
@@ -8546,6 +9881,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
   }
 
@@ -8736,6 +10072,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
   }
 
@@ -8756,6 +10093,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     visitador?: VisitadorUpdateOneRequiredWithoutEntregasNestedInput
   }
@@ -8769,6 +10107,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8781,6 +10120,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8820,6 +10160,7 @@ export namespace Prisma {
     fecha: Date | string
     hora: Date | string
     estado?: string | null
+    folio?: string | null
     created_at?: Date | string
   }
 
@@ -8831,6 +10172,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     muestra?: MuestraUpdateOneRequiredWithoutEntregasNestedInput
   }
@@ -8844,6 +10186,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8856,6 +10199,7 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
+    folio?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

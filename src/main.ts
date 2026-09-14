@@ -12,7 +12,7 @@ async function bootstrap() {
   
   const logger = new Logger('Sample - App');
   
-  await app.listen(envs.PORT || 3000);
+
   
   app.useGlobalPipes(
     new ValidationPipe({
@@ -33,6 +33,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document)
   
+  await app.listen(envs.PORT || 3000);
+
   logger.log(`Server running on port ${envs.PORT || 3000}`);
 }
 bootstrap();

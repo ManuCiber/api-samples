@@ -156,6 +156,7 @@ exports.Prisma.EntregaScalarFieldEnum = {
   fecha: 'fecha',
   hora: 'hora',
   estado: 'estado',
+  folio: 'folio',
   created_at: 'created_at'
 };
 
@@ -169,9 +170,21 @@ exports.Prisma.LogInventarioScalarFieldEnum = {
   created_at: 'created_at'
 };
 
+exports.Prisma.OperacionEntregaScalarFieldEnum = {
+  clave: 'clave',
+  huella: 'huella',
+  respuesta: 'respuesta',
+  creada_en: 'creada_en'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -184,13 +197,20 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
 
 exports.Prisma.ModelName = {
   Usuario: 'Usuario',
   Muestra: 'Muestra',
   Visitador: 'Visitador',
   Entrega: 'Entrega',
-  LogInventario: 'LogInventario'
+  LogInventario: 'LogInventario',
+  OperacionEntrega: 'OperacionEntrega'
 };
 
 /**
